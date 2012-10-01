@@ -9,10 +9,10 @@
 <script type="text/javascript">
 
 // Templates' IDs for the current AI instance
-//var templateSpace = "/places/1060"; //actually, a SPACE
-//var templateSpaceURI = "https://accenture.jiveon.com/community/deal-room-template";
-//var templateProject = "/places/1029";
-//var templateProjectURI = "https://accenture.jiveon.com/community/deal-room-template/projects/rfp-response-template-project";
+var templateSpace = "/places/1060"; //actually, a SPACE
+var templateSpaceURI = "https://accenture.jiveon.com/community/deal-room-template";
+var templateProject = "/places/1029";
+var templateProjectURI = "https://accenture.jiveon.com/community/deal-room-template/projects/rfp-response-template-project";
 
 // Jive Group selector
 var group;
@@ -31,7 +31,7 @@ var targetProjID = "";
 
 // On view load, wire up static actions and retrieve initial data
 function init() {
-    osapi.jive.core.users.get({id:'@viewer'}).execute(function(response) {});
+    osapi.jive.corev3.people.getViewer({}).execute(function(response) {});
     $("#group-create-button").click(onGroupSave);
     mini = new gadgets.MiniMessage();
 }
@@ -99,7 +99,7 @@ function createDoc (doc, source)
 	postDoc.content = doc.content;
 	postDoc.question = doc.question;
 	postDoc.parent = source;
-	osapi.jive.corev2.documents.create(postDoc).execute(onContentCreated);
+	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
 }
 
@@ -124,7 +124,7 @@ function createDisc (disc, source)
 	postDisc.question = disc.question;
 	postDisc.parent = source;
 	
-	osapi.jive.corev2.discussions.create(postDisc).execute(onContentCreated);
+	osapi.jive.corev3.discussions.create(postDisc).execute(onContentCreated);
 	return;
 }
 
@@ -168,7 +168,7 @@ function onContentFetch(response, source) {
 
 // Load Content!
 function loadContent (source) {
-osapi.jive.corev2.contents.get({
+osapi.jive.corev3.contents.get({
     fields : '@all',
 	place : source
     }).execute(function (){
@@ -246,7 +246,7 @@ function onGroupCreated(response) {
 	project.startDate = pStartDate;
 	project.dueDate = pDueDate;
 	
-	osapi.jive.corev2.projects.create(project).execute(onProjectCreated);
+	osapi.jive.corev3.projects.create(project).execute(onProjectCreated);
 	}
 }
 
@@ -259,18 +259,17 @@ function onGroupSave() {
         groupType : "",
         memberCount : 0,
         name : "",
-        type : "PRIVATE"
+        type : "group"
     };
 
     group.description = $("#group-name").val();
     group.description = "This is a deal room created for collaborating on the deal \"" + group.description + "\"";
     group.displayName = $("#group-name").val();
     group.groupType = "PRIVATE";
-    //group.contentTypes = [ "blog", "documents", "files", "discussions", "polls", "projects" ];
-    group.contentTypes = ["documents"];
+    group.contentTypes = [ "blog", "documents", "files", "discussions", "polls", "projects" ];
     group.name = $("#group-name").val();
     
-	osapi.jive.core.groups.create(group).execute(onGroupCreated);
+	osapi.jive.corev3.groups.create(group).execute(onGroupCreated);
 }
 
 // Register our on-view-load handler
