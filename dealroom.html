@@ -7,6 +7,7 @@
 <link type="text/css" href="css/security-groups.css" rel="stylesheet"/>
 
 <script type="text/javascript">
+console.log("Running script ... ");
 
 // Templates' IDs for the current AI instance
 var templateSpace = "/groups/the-soco-community"; //actually, a SPACE
@@ -36,7 +37,7 @@ function init() {
     $("#group-create-button").click(onGroupSave);
 
     console.log("calling gadgets.MiniMessage();... ");
-    mini = new gadgets.MiniMessage();
+//    mini = new gadgets.MiniMessage();
 	console.log("exiting init() ... ");
 }
 
