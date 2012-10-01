@@ -90,7 +90,9 @@ function init() {
 function ISODateString(date) {
 
     if (Date.prototype.toISOString) {
-        return date.toISOString().replace(/Z$/, "+0000");
+        var retStr = date.toISOString().replace(/Z$/, "+0000");
+        console.log ("ISODateString method-returning date.toISOString: " + retStr);
+        return retStr;
     }
 
     function pad(number) {
@@ -101,14 +103,17 @@ function ISODateString(date) {
         return r;
     }
 
-    return date.getUTCFullYear()
-        + '-' + pad( date.getUTCMonth() + 1 )
-        + '-' + pad( date.getUTCDate() )
-        + 'T' + pad( date.getUTCHours() )
-        + ':' + pad( date.getUTCMinutes() )
-        + ':' + pad( date.getUTCSeconds() )
-        + '.' + String( (date.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
-        + '+0000';
+    var retStr = date.getUTCFullYear()
+    + '-' + pad( date.getUTCMonth() + 1 )
+    + '-' + pad( date.getUTCDate() )
+    + 'T' + pad( 0 )
+    + ':' + pad( 0 )
+    + ':' + pad( 0 )
+    + '.' + String( (0).toFixed(3) ).slice( 2, 5 )
+    + '+0000';
+    
+    console.log ("ISODateString method-returning date: " + retStr);
+    return retStr;
 }
 
 function onContentCreated (response) {
