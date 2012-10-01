@@ -31,9 +31,13 @@ var targetProjID = "";
 
 // On view load, wire up static actions and retrieve initial data
 function init() {
+	Console.log("entered init() ... ");
     osapi.jive.corev3.people.getViewer({}).execute(function(response) {});
     $("#group-create-button").click(onGroupSave);
+
+    Console.log("calling gadgets.MiniMessage();... ");
     mini = new gadgets.MiniMessage();
+	Console.log("exiting init() ... ");
 }
 
 
