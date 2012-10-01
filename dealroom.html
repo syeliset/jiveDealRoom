@@ -99,7 +99,7 @@ function createDoc (doc, source)
 	postDoc.content = doc.content;
 	postDoc.question = doc.question;
 	postDoc.parent = source;
-	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
+	osapi.jive.corev2.documents.create(postDoc).execute(onContentCreated);
 	return;
 }
 
