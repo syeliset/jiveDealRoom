@@ -295,10 +295,12 @@ function onGroupCreated(response) {
 	
 	var pStartDateEntry = $("#project-start-date").val(); //Project Start
 	var pStartDateAbs = new Date(pStartDateEntry);
+	console.log ("Got start date: " + pStartDateAbs.toString());
 	var pStartDate = ISODateString(pStartDateAbs);
 	
 	var pDueDateEntry = $("#project-due-date").val(); //Project Start
 	var pDueDateAbs = new Date(pDueDateEntry);
+	console.log ("Got start date: " + pDueDateAbs.toString());
 	var pDueDate = ISODateString(pDueDateAbs);
 	
 	var pName = response.name;
