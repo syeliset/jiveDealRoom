@@ -207,6 +207,7 @@ function onProjectCreated(response) {
 	console.log("entered onProjectCreated() ... ");
 	
 	if (response.error) {
+		console.log("Project creation failed. Error creating new social project: " + response.error.message);
 	mini.createDismissibleMessage("Error creating new social project: " + response.error.message);
 	}
 	else {
@@ -244,6 +245,8 @@ function onGroupCreated(response) {
 	var gMessage = document.getElementById("response-message");
 	gMessage.innerHTML = "Group successfully created. <br /> Click <a href=\""+response.resources.html.ref+"\">here</a> to visit the group";
 	// Add GROUP Content-Copying here!
+	
+	// TODO uncomment line below?
 	//loadContent (templateSpace);
 	//Project creation within the newly created group
 	
