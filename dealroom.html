@@ -294,13 +294,15 @@ function onGroupCreated(response) {
 	//Project creation within the newly created group
 	
 	var pStartDateEntry = $("#project-start-date").val(); //Project Start
+	console.log ("startDateEntry: " + pStartDateEntry);
 	var pStartDateAbs = new Date(pStartDateEntry);
 	console.log ("Got start date: " + pStartDateAbs.toString());
 	var pStartDate = ISODateString(pStartDateAbs);
 	
 	var pDueDateEntry = $("#project-due-date").val(); //Project Start
+	console.log ("dueDateEntry: " + pDueDateEntry);
 	var pDueDateAbs = new Date(pDueDateEntry);
-	console.log ("Got start date: " + pDueDateAbs.toString());
+	console.log ("Got due date: " + pDueDateAbs.toString());
 	var pDueDate = ISODateString(pDueDateAbs);
 	
 	var pName = response.name;
