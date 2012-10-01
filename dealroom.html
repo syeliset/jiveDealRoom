@@ -269,7 +269,7 @@ function onGroupSave() {
     group.contentTypes = [ "blog", "documents", "files", "discussions", "polls", "projects" ];
     group.name = $("#group-name").val();
     
-	osapi.jive.corev2.groups.create(group).execute(onGroupCreated);
+	osapi.jive.core.groups.create(group).execute(onGroupCreated);
 }
 
 // Register our on-view-load handler
