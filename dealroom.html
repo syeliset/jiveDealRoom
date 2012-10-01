@@ -266,7 +266,8 @@ function onGroupSave() {
     group.description = "This is a deal room created for collaborating on the deal \"" + group.description + "\"";
     group.displayName = $("#group-name").val();
     group.groupType = "PRIVATE";
-    group.contentTypes = [ "blog", "documents", "files", "discussions", "polls", "projects" ];
+    //group.contentTypes = [ "blog", "documents", "files", "discussions", "polls", "projects" ];
+    group.contentTypes = ["documents"];
     group.name = $("#group-name").val();
     
 	osapi.jive.core.groups.create(group).execute(onGroupCreated);
