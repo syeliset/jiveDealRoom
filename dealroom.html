@@ -192,6 +192,7 @@ function onContentFetch(response, source) {
 
 // Load Content!
 function loadContent (source) {
+	console.log ("entering loadContent. source: " + source);
 osapi.jive.corev3.contents.get({
     fields : '@all',
 	place : source
