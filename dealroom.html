@@ -33,7 +33,7 @@ var targetProjID = "";
 function init() {
 	console.log("entered init() ... ");
 
-	var person;
+/*	var person;
 	try {
 	    osapi.jive.corev3.people.getViewer({}).execute(function(response) {
 	    	if (response.error) {
@@ -49,10 +49,9 @@ function init() {
 	catch(err) {
 		  txt="There was an error on this page.\n\n";
 		  txt+="Error description: " + err.message + "\n\n";
-		  txt+="Click OK to continue.\n\n";
-		  throw(new Error(txt)); 
+		  alert(txt); 
 	  }
-
+*/
 	
     $("#group-create-button").click(onGroupSave);
 
