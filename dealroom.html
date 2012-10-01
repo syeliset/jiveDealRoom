@@ -32,15 +32,25 @@ var targetProjID = "";
 // On view load, wire up static actions and retrieve initial data
 function init() {
 	console.log("entered init() ... ");
+
+	var person;
 	try {
-	    osapi.jive.corev3.people.getViewer({}).execute(function(response) {});
+	    osapi.jive.corev3.people.getViewer({}).execute(function(response) {
+	    	if (response.error) {
+	    	    alert("Error " + response.error.code + " reading person.  Error message was: " + response.error.message);
+	    	  }
+	    	  else {
+					console.log ("Got person successfully: " + person.id);
+		    	    person = response;
+	    	  }
+
+		    });
 	}
-	catch(err)
-	  {
-	  txt="There was an error on this page.\n\n";
-	  txt+="Error description: " + err.message + "\n\n";
-	  txt+="Click OK to continue.\n\n";
-	  alert(txt);
+	catch(err) {
+		  txt="There was an error on this page.\n\n";
+		  txt+="Error description: " + err.message + "\n\n";
+		  txt+="Click OK to continue.\n\n";
+		  throw(new Error(txt)); 
 	  }
 
 	
