@@ -7,7 +7,6 @@
 <link type="text/css" href="css/security-groups.css" rel="stylesheet"/>
 
 <script type="text/javascript">
-console.log("Running script ... ");
 
 // Templates' IDs for the current AI instance
 var templateSpace = "/groups/the-soco-community"; //actually, a SPACE
@@ -37,7 +36,7 @@ function init() {
     $("#group-create-button").click(onGroupSave);
 
     console.log("calling gadgets.MiniMessage();... ");
-//    mini = new gadgets.MiniMessage();
+    mini = new gadgets.MiniMessage();
 	console.log("exiting init() ... ");
 }
 
@@ -184,6 +183,8 @@ osapi.jive.corev3.contents.get({
 
 // Defines what needs to be done once Project is created
 function onProjectCreated(response) {
+	console.log("entered onProjectCreated() ... ");
+	
 	if (response.error) {
 	mini.createDismissibleMessage("Error creating new social project: " + response.error.message);
 	}
@@ -197,12 +198,16 @@ function onProjectCreated(response) {
 	loadContent (templateProject);
 
 	}
+
+	console.log("exiting onProjectCreated() ... ");
 }
 
 // Defines what needs to be done once group is created
 // 1. Copy the contents from template group to the new group.
 // 2. Create Project
 function onGroupCreated(response) {
+	console.log("entered onGroupCreated() ... ");
+	
 	if (response.error) {
 	console.log("Error creating new social group: " + response.error.message);
 	}
@@ -253,10 +258,14 @@ function onGroupCreated(response) {
 	
 	osapi.jive.corev3.projects.create(project).execute(onProjectCreated);
 	}
+
+	console.log("exiting onGroupCreated() ... ");
 }
 
 // Creating a Group
 function onGroupSave() {
+	console.log("entered onGroupSave() ... ");
+	
     group = {
         displayName : "",
         description : "",
@@ -275,6 +284,9 @@ function onGroupSave() {
     group.name = $("#group-name").val();
     
 	osapi.jive.corev3.groups.create(group).execute(onGroupCreated);
+
+	console.log("exiting onGroupSave() ... ");
+	
 }
 
 // Register our on-view-load handler
