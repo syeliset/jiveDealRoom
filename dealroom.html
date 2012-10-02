@@ -73,7 +73,7 @@ function destroyContent(response, source)
     }
 
 	
-	console.log ("destorying content with source: " +  response.resources.self.ref);
+	console.log ("destorying content with source: " +  source);
 
     var disc = response;
     disc.destroy().execute( function (response) {
