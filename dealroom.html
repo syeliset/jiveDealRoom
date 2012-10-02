@@ -169,7 +169,9 @@ function createDoc (doc, parent)
 	postDoc.tags = doc.tags;
 	postDoc.subject = doc.subject;
 	postDoc.content = doc.content;
-	postDoc.attachments = doc.attachments;
+//	postDoc.attachments = doc.attachments;
+
+	postDoc.attachments = jQuery.parseJSON("[ {\"name\" : \"templateOffice Communicator R2 Quick Reference Guide.doc\",\"contentType\" : \"application/msword\",\"url\" : \"https://apps-public-cloud-trunk.jivesoftware.com/api/core/v3/attachments/1309/data\",\"doUpload\" : true,} ]");
 	postDoc.parent = parent;
 	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
