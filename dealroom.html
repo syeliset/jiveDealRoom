@@ -205,14 +205,16 @@ function createContent(eachContentPiece, parent)
 	if (eachContentPiece.type == "discussion") {
 		createDisc (eachContentPiece, parent);
 	}
-	//else if (eachContentPiece.type == "file") {
-		//createFile (eachContentPiece, parent);
-	}	
 	else if (eachContentPiece.type == "document") {
 		createDoc (eachContentPiece, parent);
 	}
 
-	/*else if (eachContentPiece.type == "blog") {
+	/*
+	else if (eachContentPiece.type == "file") {
+		createFile (eachContentPiece, parent);
+	}	
+	
+	else if (eachContentPiece.type == "blog") {
 		createBlog (eachContentPiece, parent);
 	}
 
