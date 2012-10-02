@@ -228,6 +228,7 @@ function onContentFetch(response, source) {
 	if (response.error) {
 		console.log("Error fetching existing jive project: " + response.error.message);
 	}
+	else (console.log (response.toStriong()));
 	
 	var allContent = response.list;
 	$.each(allContent, function(index, group) {
