@@ -236,7 +236,7 @@ function onContentFetch(response, source) {
 // Load Content!
 function loadContent (source) {
 	console.log ("entering loadContent. source: " + source);
-osapi.jive.corev3.contents.get({
+osapi.jive.corev3.places.get({
     fields : '@all',
 	place : source
     }).execute(function (){
@@ -251,7 +251,7 @@ function onProjectCreated(response) {
 	
 	if (response.error) {
 		console.log("Project creation failed. Error creating new social project: " + response.error.message);
-	mini.createDismissibleMessage("Error creating new social project: " + response.error.message);
+		mini.createDismissibleMessage("Error creating new social project: " + response.error.message);
 	}
 	else {
 	targetProjID = response.resources.self.ref;
@@ -296,14 +296,14 @@ function onGroupCreated(response) {
 //	var pStartDateEntry = $("#project-start-date").val(); //Project Start
 //	console.log ("startDateEntry: " + pStartDateEntry);
 //	var pStartDateAbs = new Date(pStartDateEntry + " 00:00:00");
-	var pStartDateAbs = new Date("2012", "9", "9", "0", "0", "0", "0");
+	var pStartDateAbs = new Date("2012", "8", "9", "0", "0", "0", "0");    //Month is 0-11, 12=> next yr Jan
 	console.log ("Got start date: " + pStartDateAbs.toString());
 	var pStartDate = ISODateString(pStartDateAbs);
 	
 //	var pDueDateEntry = $("#project-due-date").val(); //Project Start
 //	console.log ("dueDateEntry: " + pDueDateEntry);
 //	var pDueDateAbs = new Date(pDueDateEntry + " 00:00:00");
-	var pDueDateAbs = new Date("2012", "12", "12", "0", "0", "0", "0");
+	var pDueDateAbs = new Date("2012", "11", "12", "0", "0", "0", "0");   //Month is 0-11, 12=> next yr Jan
 	console.log ("Got due date: " + pDueDateAbs.toString());
 	var pDueDate = ISODateString(pDueDateAbs);
 	
