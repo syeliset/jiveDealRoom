@@ -117,10 +117,15 @@ function ISODateString(date) {
 }
 
 function onContentCreated (response) {
+	console.log ("entered onContentCreated ...");
+	console.log ("created content with id: " +  response.resources.self.ref);
     if (response.error) {
         console.log("Unable to create : " + response.error.message);
         return;
     }
+
+    console.log ("response: " + JSON.stringify(response));
+	console.log ("exiting onContentCreated ...");
 }
 
 function createIdea (idea, source)
@@ -190,7 +195,7 @@ function createDisc (disc, source)
 	postDisc.content = disc.content;
 	postDisc.question = disc.question;
 	postDisc.parent = source;
-	
+
 	osapi.jive.corev3.discussions.create(postDisc).execute(onContentCreated);
 	return;
 }
@@ -236,7 +241,7 @@ function onContentFetch(response, source) {
 			$.each(allContent, function(index, group) {
 			var eachContentPiece = group;
 			console.log("Content "+index+": "+JSON.stringify(eachContentPiece));
-			createContent(eachContentPiece, source);	
+			createContent(eachContentPiece, targetProjID);	
 			});
 					
 	}
