@@ -222,9 +222,10 @@ function createContent(eachContentPiece, source)
 }
 
 //Fetching Content and creating each piece of content
-function onContentFetch(response, source) {
-	alert (response);
-	console.log ("Source: "+source+" Content: "+JSON.stringify(response.list));
+function onContentFetch(response, srcPrj) {
+
+	console.log ("srcPrj: "+srcPrj);
+	console.log ("Content: "+JSON.stringify(response.list));
 
 	
 	if (response.error) {
