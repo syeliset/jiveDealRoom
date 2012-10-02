@@ -192,6 +192,7 @@ function createFile (file, parent)
 	postFile.tags = file.tags;
 	postFile.subject = file.subject;
 	postFile.content = file.content;
+	postFile.attachments = file.attachments;
 	postFile.parent = parent;
 	osapi.jive.corev3.documents.create(postFile).execute(onContentCreated);
 	return;
