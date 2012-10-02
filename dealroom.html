@@ -169,7 +169,7 @@ function createDoc (doc, parent)
 	postDoc.tags = doc.tags;
 	postDoc.subject = doc.subject;
 	postDoc.content = doc.content;
-	postDoc.attachments = file.attachments;
+	postDoc.attachments = doc.attachments;
 	postDoc.parent = parent;
 	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
