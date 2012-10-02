@@ -118,7 +118,7 @@ function ISODateString(date) {
 
 function onContentCreated (response) {
 	console.log ("entered onContentCreated ...");
-	console.log ("created content with id: " +  response.resources.self.ref);
+	//console.log ("created content with id: " +  response.resources.self.ref);
     if (response.error) {
         console.log("Unable to create : " + response.error.message);
         return;
