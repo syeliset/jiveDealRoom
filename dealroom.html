@@ -200,27 +200,27 @@ function createDisc (disc, parent)
 	return;
 }
 
-function createContent(eachContentPiece, source)
+function createContent(eachContentPiece, parent)
 {
 	if (eachContentPiece.type == "discussion") {
-		createDisc (eachContentPiece, source);
+		createDisc (eachContentPiece, parent);
 	}
-	else if (eachContentPiece.type == "file") {
-		createFile (eachContentPiece, source);
+	//else if (eachContentPiece.type == "file") {
+		//createFile (eachContentPiece, parent);
 	}	
 	else if (eachContentPiece.type == "document") {
-		createDoc (eachContentPiece, source);
+		createDoc (eachContentPiece, parent);
 	}
 
 	/*else if (eachContentPiece.type == "blog") {
-		createBlog (eachContentPiece, source);
+		createBlog (eachContentPiece, parent);
 	}
 
 	else if (eachContentPiece.type == "idea") {
-		createIdea (eachContentPiece, source);
+		createIdea (eachContentPiece, parent);
 	}
 	else if (eachContentPiece.type == "poll") {
-		createPoll (eachContentPiece, source);
+		createPoll (eachContentPiece, parent);
 	}	
 	else {
 		return; 
@@ -229,7 +229,7 @@ function createContent(eachContentPiece, source)
 }
 
 //Fetching Content and creating each piece of content
-function onContentFetch(response, source) {
+function onContentFetch(response, targetProjID) {
 
 	console.log("entering onContentFetch ... ");
 	
@@ -253,15 +253,14 @@ function onContentFetch(response, source) {
 }
 
 // Load Content!
-function loadContent (source) {
+function loadContent (source, targetProjID) {
 
 	console.log ("entering loadContent. source: " + source);
-//	source = "/groups/the-soco-community/projects/jivedealroom-template";
 	var srcPrjReq = osapi.jive.corev3.contents.get({fields : '@all', place : source});
 	srcPrjReq.execute(
    	    function (response){
 
-   	    	onContentFetch(response, source);
+   	    	onContentFetch(response, targetProjID);
 		}
 	);
 }
@@ -282,7 +281,7 @@ function onProjectCreated(response) {
 	//mini.createDismissibleMessage("Project created with the ID: " + response.id);
 	var gMessage = document.getElementById("response-message");
 	gMessage.innerHTML = gMessage.innerHTML + "<br />Click <a href=\""+response.resources.html.ref+"\">here</a> to visit the Project";
-	loadContent (templateProject);
+	loadContent (templateProject, targetProjID);
 
 	}
 
