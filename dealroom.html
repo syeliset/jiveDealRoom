@@ -198,7 +198,7 @@ function createFile (file, parent)
 	
 	//documents.upload not supported.
 	//osapi.jive.corev3.files pkg doesn't exist. How to replicate "upload" func. ????
-	osapi.jive.corev3.documents.upload(postFile).execute(onContentCreated);
+	osapi.jive.corev3.documents.create(postFile).execute(onContentCreated);
 	return;
 }
 
