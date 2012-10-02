@@ -246,13 +246,21 @@ function loadContent (source) {
 
 	console.log ("entering loadContent. source: " + source);
 	source = "/groups/the-soco-community/projects/jivedealroom-template";
-	var srcPrjReq = osapi.jive.corev3.contents.get({
-    fields : '@all',
-//	id : "1211"
-//	placeId : "4273"
-	uri : source
-    })
-    
+	var srcPrjReq = "";
+
+	try{
+			srcPrjReq = osapi.jive.corev3.contents.get({
+		    fields : '@all',
+		//	id : "1211"
+		//	placeId : "4273"
+			uri : source
+		    })
+	}
+	catch (err)
+	{
+		mini.createDismissibleMessage("Error creating new social project: " + err.message);
+//		console.log("Request creation failed. Error creating new social project: " + error.message);
+	}
     srcPrjReq.execute(
     	    function (){
 						onContentFetch(source);
