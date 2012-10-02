@@ -225,7 +225,9 @@ function createContent(eachContentPiece, source)
 function onContentFetch(response, source) {
 
 	console.log ("source: "+source);
-	console.log("response: "+response);
+
+	var jivePlace = response;
+	console.log("response: "+ JSON.stringify(jivePlace));
 
 	
 	if (response.error) {
