@@ -253,7 +253,10 @@ function loadContent (source) {
    	            var content = response.list[0];
 				console.log ("Content[0]: " + JSON.stringify(content));
    	        }
-   	        else (console.log ("Response NOT a LIST!!!"));
+   	        else {
+   	   	        console.log ("Response NOT a LIST!!!");
+		   	  console.log ("response: " + response));
+   	        }
 
    	    	//onContentFetch(source);
 		}
