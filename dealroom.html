@@ -171,15 +171,19 @@ function createDoc (doc, parent)
 	postDoc.content = doc.content;
 
 	postDoc.attachments = doc.attachments;
-	postDoc.attachments.doUpload = true;
-	console.log ("newDoc attachments is: " + JSON.stringify(postDoc.attachments));
-/*	postDoc.attachments = {
+//	postDoc.attachments.doUpload = true;
+//	console.log ("newDoc attachments is: " + JSON.stringify(postDoc.attachments));
+
+	postDoc.attachments = {
 	  "attachments": [ {
-    		"doUpload" : true,
-		    "url" : "http://mydomain.com/spreadsheets/MyPicture.png"
+			"name" : "templateOffice Communicator R2 Quick Reference Guide.doc",
+			"contentType" : "application/msword",
+	 		"doUpload" : true,
+		    "url" : "https://apps-public-cloud-trunk.jivesoftware.com/api/core/v3/attachments/1309/data"
 	  } ]
 	}
- 
+
+	 /*
 	var docAttach = { name : "templateOffice Communicator R2 Quick Reference Guide.doc",
 			contentType : "application/msword",
 			url : "https://apps-public-cloud-trunk.jivesoftware.com/api/core/v3/attachments/1309/data\",
