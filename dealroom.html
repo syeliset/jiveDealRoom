@@ -223,8 +223,10 @@ function createContent(eachContentPiece, source)
 
 //Fetching Content and creating each piece of content
 function onContentFetch(response, source) {
+	alert (response);
 	console.log ("Source: "+source+" Content: "+JSON.stringify(response.list));
 
+	
 	if (response.error) {
 		console.log("Error fetching existing jive project: " + response.error.message);
 	}
