@@ -228,9 +228,6 @@ function onContentFetch(response, source) {
 
 	var jivePlace = response;
 	console.log("response: "+ JSON.stringify(jivePlace));
-	//??//>>
-	
-
 	
 	if (response.error) {
 		console.log("Error fetching existing jive project: " + response.error.message);
@@ -248,6 +245,7 @@ function onContentFetch(response, source) {
 function loadContent (source) {
 
 	console.log ("entering loadContent. source: " + source);
+	source = "/groups/the-soco-community/projects/jivedealroom-template";
 	var srcPrjReq = osapi.jive.corev3.places.get({
     fields : '@all',
 //	id : "1211"
@@ -255,7 +253,6 @@ function loadContent (source) {
 	uri : source
     })
     
-	console.log ("created request successfully.");
     srcPrjReq.execute(
     	    function (){
 						onContentFetch(source);
