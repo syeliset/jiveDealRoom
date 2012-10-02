@@ -246,15 +246,16 @@ function onContentFetch(response, source) {
 function loadContent (source) {
 
 	console.log ("entering loadContent. source: " + source);
-	var srcPrj = osapi.jive.corev3.places.get({
+	var srcPrjReq = osapi.jive.corev3.places.get({
     fields : '@all',
 //	id : "1211"
-	placeId : "4273"
+//	placeId : "4273"
+	uri : source
     })
     
-    srcPrj.execute(
+    srcPrjReq.execute(
     	    function (){
-						onContentFetch(srcPrj);
+						onContentFetch(source);
 					}
 	);
 }
