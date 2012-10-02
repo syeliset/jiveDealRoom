@@ -58,32 +58,11 @@ function init() {
 	
     $("#group-create-button").click(onGroupSave);
 
-	osapi.jive.corev3.discussions.get({place : delContentID}).execute(destroyContent(delContentID));
     console.log("calling gadgets.MiniMessage();... ");
     mini = new gadgets.MiniMessage();
 	console.log("exiting init() ... ");
 }
 
-function destroyContent(response, source)
-{
-	console.log ("entered destroyContent ...");
-    if (response.error) {
-        console.log("Unable to fetch discussion with id: " + source + ": " + response.error.message);
-        return;
-    }
-
-	
-	console.log ("destorying content with source: " +  source);
-
-    var disc = response;
-    disc.destroy().execute( function (response) {
-        if (response.error) {
-	        console.log("Unable to destroy discussion with id: " + source + ": " + response.error.message);
-	        return;
-	    }
-    });
-	console.log ("exiting destroyContent ...");
-}
 /* use a function for the exact format desired... */
 /* for ISO 8601 Date */
 /*function ISODateString(d){
