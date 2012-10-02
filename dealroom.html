@@ -222,22 +222,27 @@ function createContent(eachContentPiece, source)
 }
 
 //Fetching Content and creating each piece of content
-function onContentFetch(source, response) {
+function onContentFetch(response, source) {
 
-	console.log ("source: "+ source);
-	alert (response);
-	//console.log("response: "+ JSON.stringify(response));
+	console.log("entering onContentFetch ... ");
 	
 	if (response.error) {
 		console.log("Error fetching existing jive project: " + response.error.message);
 	}
-	
-	var allContent = response.list;
-	$.each(allContent, function(index, group) {
-		var eachContentPiece = group;
-		//console.log("Content "+index+": "+JSON.stringify(eachContentPiece));
-		createContent(eachContentPiece, source);	
-	});
+
+	else if (response.list && response.list.length > 0)
+	{
+			var allContent = response.list;
+			$.each(allContent, function(index, group) {
+			var eachContentPiece = group;
+			console.log("Content "+index+": "+JSON.stringify(eachContentPiece));
+			createContent(eachContentPiece, source);	
+			});
+					
+	}
+	else {
+			console.log ("Error fetching contents: response: " + JSON.stringify(response));
+	}
 }
 
 // Load Content!
@@ -249,16 +254,7 @@ function loadContent (source) {
 	srcPrjReq.execute(
    	    function (response){
 
-   	        if (response.list && response.list.length > 0) {
-   	            var content = response.list[0];
-				console.log ("Content[0]: " + JSON.stringify(content));
-   	        }
-   	        else {
-   	   	        console.log ("Response NOT a LIST!!!");
-		   	  console.log ("response: " + JSON.stringify(response));
-   	        }
-
-   	    	//onContentFetch(source);
+   	    	onContentFetch(response, source);
 		}
 	);
 }
