@@ -169,8 +169,30 @@ function createDoc (doc, parent)
 	postDoc.tags = doc.tags;
 	postDoc.subject = doc.subject;
 	postDoc.content = doc.content;
-	postDoc.question = doc.question;
 	postDoc.parent = parent;
+	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
+	return;
+}
+
+function createFile (file, parent)
+{
+	var postFile = {
+	type : "",
+	tags : [],
+	subject : "",
+	content : {
+		text : "",
+		type : ""
+	},
+	question : "",
+	parent : ""
+	}
+	
+	postFile.type = file.type;
+	postFile.tags = file.tags;
+	postFile.subject = file.subject;
+	postFile.content = file.content;
+	postFile.parent = parent;
 	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
 }
@@ -208,6 +230,9 @@ function createContent(eachContentPiece, parent)
 	else if (eachContentPiece.type == "document") {
 		createDoc (eachContentPiece, parent);
 	}
+	else if (eachContentPiece.type == "file") {
+		createFile (eachContentPiece, parent);
+	}	
 
 	/*
 	else if (eachContentPiece.type == "file") {
