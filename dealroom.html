@@ -246,7 +246,7 @@ function loadContent (source) {
 
 	console.log ("entering loadContent. source: " + source);
 	source = "/groups/the-soco-community/projects/jivedealroom-template";
-	var srcPrjReq = osapi.jive.corev3.places.get({
+	var srcPrjReq = osapi.jive.corev3.contents.get({
     fields : '@all',
 //	id : "1211"
 //	placeId : "4273"
@@ -391,7 +391,7 @@ gadgets.util.registerOnLoadHandler(init);
 		    <tr>
 		        <th>Deal Room Name:</th>
 		        <td>
-		            <input id="group-name" class="group-input" type="text" value="Dummy Deal Room 1" size=50/>
+		            <input id="group-name" class="group-input" type="text" value="jiveDealRoomCopy1" size=50/>
 		        </td>
 		    </tr>
 		    <tr>
