@@ -224,6 +224,11 @@ function createContent(eachContentPiece, source)
 //Fetching Content and creating each piece of content
 function onContentFetch(response, source) {
 	console.log ("Source: "+source+" Content: "+JSON.stringify(response.list));
+
+	if (response.error) {
+		console.log("Error fetching existing jive project: " + response.error.message);
+	}
+	
 	var allContent = response.list;
 	$.each(allContent, function(index, group) {
 		var eachContentPiece = group;
@@ -235,12 +240,17 @@ function onContentFetch(response, source) {
 
 // Load Content!
 function loadContent (source) {
+
 	console.log ("entering loadContent. source: " + source);
-osapi.jive.corev3.places.get({
+	var srcPrj = osapi.jive.corev3.places.get({
     fields : '@all',
 	place : source
-    }).execute(function (){
-	onContentFetch(source);}
+    })
+    
+    srcPrj.execute(
+    	    function (){
+						onContentFetch(source);
+					}
 	);
 }
 
