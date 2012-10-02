@@ -170,9 +170,8 @@ function createDoc (doc, parent)
 	postDoc.subject = doc.subject;
 	postDoc.content = doc.content;
 
-	postDoc.attachments = doc.attachments;
+//	postDoc.attachments = doc.attachments;
 //	postDoc.attachments.doUpload = true;
-//	console.log ("newDoc attachments is: " + JSON.stringify(postDoc.attachments));
 
 	postDoc.attachments = [ {
 			"name" : "templateOffice Communicator R2 Quick Reference Guide.doc",
@@ -181,6 +180,8 @@ function createDoc (doc, parent)
 		    "url" : "https://apps-public-cloud-trunk.jivesoftware.com/api/core/v3/attachments/1309/data"
 	  } ]
 
+
+	console.log ("newDoc attachments is: " + JSON.stringify(postDoc.attachments));
 	 /*
 	var docAttach = { name : "templateOffice Communicator R2 Quick Reference Guide.doc",
 			contentType : "application/msword",
