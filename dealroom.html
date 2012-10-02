@@ -228,7 +228,6 @@ function onContentFetch(response, source) {
 	if (response.error) {
 		console.log("Error fetching existing jive project: " + response.error.message);
 	}
-	else (console.log (response.toStriong()));
 	
 	var allContent = response.list;
 	$.each(allContent, function(index, group) {
@@ -236,7 +235,6 @@ function onContentFetch(response, source) {
 		//console.log("Content "+index+": "+JSON.stringify(eachContentPiece));
 		createContent(eachContentPiece, source);	
 	});
-
 }
 
 // Load Content!
@@ -245,7 +243,8 @@ function loadContent (source) {
 	console.log ("entering loadContent. source: " + source);
 	var srcPrj = osapi.jive.corev3.places.get({
     fields : '@all',
-	id : "1211"
+//	id : "1211"
+	placeId : "4273"
     })
     
     srcPrj.execute(
