@@ -222,10 +222,10 @@ function createContent(eachContentPiece, source)
 }
 
 //Fetching Content and creating each piece of content
-function onContentFetch(response, srcPrj) {
+function onContentFetch(response, source) {
 
-	console.log ("srcPrj: "+srcPrj);
-	console.log ("Content: "+JSON.stringify(response.list));
+	console.log ("source: "+source);
+	console.log("response: "+response);
 
 	
 	if (response.error) {
@@ -250,9 +250,10 @@ function loadContent (source) {
 	placeId : "4273"
     })
     
+    console.print ("srcPrj.toURI: " + srcPrj.toURI());
     srcPrj.execute(
     	    function (){
-						onContentFetch(srcPrj);
+						onContentFetch(srcPrj.);
 					}
 	);
 }
