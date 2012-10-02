@@ -151,7 +151,7 @@ function createBlog (blog, source)
 	
 } */
 
-function createDoc (doc, source)
+function createDoc (doc, parent)
 {
 	var postDoc = {
 	type : "",
@@ -170,12 +170,12 @@ function createDoc (doc, source)
 	postDoc.subject = doc.subject;
 	postDoc.content = doc.content;
 	postDoc.question = doc.question;
-	postDoc.parent = source;
+	postDoc.parent = parent;
 	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
 }
 
-function createDisc (disc, source)
+function createDisc (disc, parent)
 {
 	var postDisc = {
 	type : "",
@@ -194,7 +194,7 @@ function createDisc (disc, source)
 	postDisc.subject = disc.subject;
 	postDisc.content = disc.content;
 	postDisc.question = disc.question;
-	postDisc.parent = source;
+	postDisc.parent = parent;
 
 	osapi.jive.corev3.discussions.create(postDisc).execute(onContentCreated);
 	return;
@@ -205,20 +205,22 @@ function createContent(eachContentPiece, source)
 	if (eachContentPiece.type == "discussion") {
 		createDisc (eachContentPiece, source);
 	}
-	/* else if (eachContentPiece.type == "document") {
+	else if (eachContentPiece.type == "file") {
+		createFile (eachContentPiece, source);
+	}	
+	else if (eachContentPiece.type == "document") {
 		createDoc (eachContentPiece, source);
 	}
-	else if (eachContentPiece.type == "blog") {
+
+	/*else if (eachContentPiece.type == "blog") {
 		createBlog (eachContentPiece, source);
 	}
+
 	else if (eachContentPiece.type == "idea") {
 		createIdea (eachContentPiece, source);
 	}
 	else if (eachContentPiece.type == "poll") {
 		createPoll (eachContentPiece, source);
-	}	
-	else if (eachContentPiece.type == "file") {
-		createFile (eachContentPiece, source);
 	}	
 	else {
 		return; 
@@ -238,8 +240,8 @@ function onContentFetch(response, source) {
 	else if (response.list && response.list.length > 0)
 	{
 			var allContent = response.list;
-			$.each(allContent, function(index, group) {
-			var eachContentPiece = group;
+			$.each(allContent, function(index, content) {
+			var eachContentPiece = content;
 			console.log("Content "+index+": "+JSON.stringify(eachContentPiece));
 			createContent(eachContentPiece, targetProjID);	
 			});
