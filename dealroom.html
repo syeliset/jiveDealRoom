@@ -244,7 +244,7 @@ function onContentFetch(source, response) {
 function loadContent (source) {
 
 	console.log ("entering loadContent. source: " + source);
-	source = "/groups/the-soco-community/projects/jivedealroom-template";
+//	source = "/groups/the-soco-community/projects/jivedealroom-template";
 	var srcPrjReq = osapi.jive.corev3.contents.get({fields : '@all', place : source});
 	srcPrjReq.execute(
    	    function (response){
