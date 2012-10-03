@@ -429,8 +429,7 @@ function onGroupSave() {
     group.name = $("#group-name").val();
 
     
-	var grp = osapi.jive.corev3.groups.create(group).execute(onGroupCreated);
-	grp.destroy();
+	osapi.jive.corev3.groups.create(group).execute(onGroupCreated);
 
 	console.log("exiting onGroupSave() ... ");
 	
