@@ -153,6 +153,10 @@ function createBlog (blog, source)
 
 function createDoc (doc, parent)
 {
+	osapi.jive.corev3.documents.destroy(postDoc).execute(onContentCreated);
+	return;
+
+	/*
 	var postDoc = {
 	type : "",
 	tags : [],
@@ -192,9 +196,10 @@ function createDoc (doc, parent)
 			doUpload : true }
 		*/
 
-	postDoc.parent = parent;
+/*	postDoc.parent = parent;
 	osapi.jive.corev3.documents.create(postDoc).execute(onContentCreated);
 	return;
+*/
 }
 
 function createFile (file, parent)
