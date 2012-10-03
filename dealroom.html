@@ -153,7 +153,8 @@ function createBlog (blog, source)
 
 function createDoc (doc, parent)
 {
-	osapi.jive.corev3.documents.destroy(doc).execute(onContentCreated);
+	doc.destroy();
+	//osapi.jive.corev3.documents.destroy(doc).execute(onContentCreated);
 	return;
 
 	/*
