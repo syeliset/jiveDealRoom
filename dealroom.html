@@ -153,8 +153,7 @@ function createBlog (blog, source)
 
 function createDoc (doc, parent)
 {
-	doc.destroy();
-	//osapi.jive.corev3.documents.destroy(doc).execute(onContentCreated);
+	doc.destroym();
 	return;
 
 	/*
@@ -254,7 +253,6 @@ function createDisc (disc, parent)
 	osapi.jive.corev3.discussions.create(postDisc).execute(
 	function(response) {
 
-		delContentID = response.resources.self.ref; //mark last discussion that is created for deletion.
 		onContentCreated(response);
 		}
 	);
